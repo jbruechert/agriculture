@@ -3,7 +3,7 @@ farming.register_plant("agriculture:carrot", {
 	inventory_image = "agriculture_carrot_seed.png",
 	steps = 4,
 	minlight = 10,
-	fertility = "grassland",
+	fertility = {"grassland"},
 })
 
 minetest.register_craftitem("agriculture:carrot_cake", {
@@ -22,7 +22,7 @@ minetest.register_craftitem("agriculture:carrot_cake_dough", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "agriculture:seed_carrot",
-	recipe = "agriculture:carrot"
+	recipe = {"agriculture:carrot"}
 })
 
 minetest.register_craft({

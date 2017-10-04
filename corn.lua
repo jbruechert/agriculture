@@ -23,7 +23,7 @@ minetest.register_craftitem("agriculture:corn_bread_dough", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "agriculture:seed_corn",
-	recipe = "agriculture:corn"
+	recipe = {"agriculture:corn"}
 })
 
 minetest.register_craft({

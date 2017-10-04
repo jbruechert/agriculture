@@ -3,7 +3,7 @@ farming.register_plant("agriculture:strawberry", {
 	inventory_image = "agriculture_strawberry_seed.png",
 	steps = 4,
 	minlight = 11,
-	fertility = "grassland",
+	fertility = {"grassland"},
 })
 
 minetest.register_craftitem("agriculture:strawberry_cake", {

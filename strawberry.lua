@@ -1,19 +1,15 @@
-
---strawberrys
-
 farming.register_plant("agriculture:strawberry", {
 	description = "Strawberry Seeds",
 	inventory_image = "agriculture_strawberry_seed.png",
 	steps = 4,
 	minlight = 11,
-	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland"},
+	fertility = "grassland",
 })
 
 minetest.register_craftitem("agriculture:strawberry_cake", {
 	description = "Strawberry Cake",
 	inventory_image = "agriculture_strawberry_cake.png",
-        on_use = minetest.item_eat(20),
+	on_use = minetest.item_eat(20),
 })
 
 minetest.register_craftitem("agriculture:strawberry_cake_dough", {
@@ -21,12 +17,13 @@ minetest.register_craftitem("agriculture:strawberry_cake_dough", {
 	inventory_image = "agriculture_strawberry_cake_dough.png",
 })
 
+-- crafting
+
 minetest.register_craft({
 	type = "shapeless",
 	output = "agriculture:seed_strawberry",
 	recipe = {"agriculture:strawberry"}
 })
-
 
 minetest.register_craft({
 	type = "shapeless",
@@ -42,15 +39,12 @@ minetest.register_craft({
 	recipe = "agriculture:strawberry_cake_dough"
 })
 
-
-
-
-
-minetest.override_item("agriculture:strawberry_4", {
-    drop = "agriculture:strawberry 2"
-})
-
-
+-- make strawberry eatable
 minetest.override_item("agriculture:strawberry", {
     on_use = minetest.item_eat(1),
+})
+
+-- Override drop
+minetest.override_item("agriculture:strawberry_4", {
+    drop = "agriculture:strawberry 2"
 })

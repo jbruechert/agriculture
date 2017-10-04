@@ -1,5 +1,3 @@
---sugar beet
-
 farming.register_plant("agriculture:sugar_beet", {
 	description = "Sugar Beet Seed",
 	inventory_image = "agriculture_sugar_beet_seed.png",
@@ -14,7 +12,7 @@ minetest.register_craftitem("agriculture:sugar", {
 	inventory_image = "agriculture_sugar.png",
 })
 
---crafting
+-- crafting
 
 minetest.register_craft({
 	type = "cooking",
@@ -28,10 +26,8 @@ minetest.register_craft({
 	output = "agriculture:seed_sugar_beet",
 	recipe = {"agriculture:sugar_beet"}
 })
- 
 
-
-
+-- Override drop
 minetest.override_item("agriculture:sugar_beet_5", {
     drop = "agriculture:sugar_beet 2"
 })

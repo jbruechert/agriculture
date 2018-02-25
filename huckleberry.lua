@@ -11,7 +11,7 @@
 for i = 3 , 5 do		
 	minetest.override_item("agriculture:huckleberry_"..i, {
 		drawtype = "mesh",
-			mesh = "agriculture_huckleberry_bush.obj",
+        mesh = "agriculture_huckleberry_bush.obj",
 
 	})
 end
@@ -19,7 +19,7 @@ end
 
 minetest.override_item("agriculture:huckleberry_2", {
 	drawtype = "mesh",
-		mesh = "agriculture_huckleberry_bush_2.obj",
+    mesh = "agriculture_huckleberry_bush_2.obj",
 
 })
 

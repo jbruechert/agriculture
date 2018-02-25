@@ -87,9 +87,9 @@ minetest.override_item("default:bush_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"agriculture:seed_huckleberry"}, rarity = 8, "default:dirt"},
-			{items = {"agriculture:seed_huckleberry"}, rarity = 12, "default:dirt"},
-			{items = {"default:dirt"}},
+			{items = {"agriculture:seed_huckleberry"}, rarity = 8, "default:bush_leaves"},
+			{items = {"agriculture:seed_huckleberry"}, rarity = 12, "default:bush_leaves"},
+			{items = {"default:bush_leaves"}},
 		}
 	}
 })

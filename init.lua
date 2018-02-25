@@ -3,6 +3,7 @@ dofile(minetest.get_modpath("agriculture") .. "/sugar_beet.lua")
 dofile(minetest.get_modpath("agriculture") .. "/strawberry.lua")
 dofile(minetest.get_modpath("agriculture") .. "/corn.lua")
 dofile(minetest.get_modpath("agriculture") .. "/tomato.lua")
+dofile(minetest.get_modpath("agriculture") .. "/huckleberry.lua")
 
 
 -- salt
@@ -78,6 +79,16 @@ minetest.override_item("default:dirt_with_grass", {
 			{items = {"agriculture:tomato_seed"}, rarity = 8, "default:dirt"},
 			{items = {"agriculture:seed_sugar_beet"}, rarity = 12, "default:dirt"},
 			{items = {"default:dirt"}},
+		}
+	}
+})
+
+minetest.override_item("default:bush_leaves", {
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"agriculture:seed_huckleberry"}, rarity = 8, "default:bush_leaves"},
+			{items = {"default:bush_leaves"}},
 		}
 	}
 })

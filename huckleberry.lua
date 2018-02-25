@@ -1,4 +1,4 @@
- farming.register_plant("agriculture:huckleberry", {
+farming.register_plant("agriculture:huckleberry", {
 	description = "Huckleberry Seeds",
 	inventory_image = "agriculture_huckleberry_seeds.png",
 	steps = 5,
@@ -11,16 +11,14 @@
 for i = 3 , 5 do		
 	minetest.override_item("agriculture:huckleberry_"..i, {
 		drawtype = "mesh",
-        mesh = "agriculture_huckleberry_bush.obj",
-
+		mesh = "agriculture_huckleberry_bush.obj",
 	})
 end
 
 
 minetest.override_item("agriculture:huckleberry_2", {
 	drawtype = "mesh",
-    mesh = "agriculture_huckleberry_bush_2.obj",
-
+	mesh = "agriculture_huckleberry_bush_2.obj",
 })
 
 minetest.register_craft({
@@ -58,11 +56,11 @@ minetest.register_craft({
 -- Override drop
 minetest.override_item("agriculture:huckleberry_5", {
 	drawtype = "mesh",
-		mesh = "agriculture_huckleberry_bush.obj",
-    drop = "agriculture:huckleberry 3"
+	mesh = "agriculture_huckleberry_bush.obj",
+	drop = "agriculture:huckleberry 3"
 })
 
 -- make huckleberry eatable
 minetest.override_item("agriculture:huckleberry", {
-    on_use = minetest.item_eat(1),
+	on_use = minetest.item_eat(1),
 })

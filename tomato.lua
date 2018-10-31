@@ -4,6 +4,7 @@ farming.register_plant("agriculture:tomato", {
 	steps = 8,
 	minlight = 12,
 	fertility = {"grassland"},
+	on_use = minetest.item_eat(10)
 })
 
 minetest.register_craftitem("agriculture:tomato_bread", {
@@ -15,7 +16,6 @@ minetest.register_craftitem("agriculture:tomato_bread", {
 minetest.register_craftitem("agriculture:tomato_seed", {
 	description = "Tomato Seed (need a stick to grow)",
 	inventory_image = "agriculture_tomato_seed.png",
-	on_use = minetest.item_eat(10),
 })
 
 -- crafting

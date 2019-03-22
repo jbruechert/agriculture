@@ -1,5 +1,5 @@
 farming.register_plant("agriculture:tomato", {
-	description = "Tomato Stick Wirth Seeds",
+	description = "Tomato Stick With Seeds",
 	inventory_image = "agriculture_tomato_stick_seed.png",
 	steps = 8,
 	minlight = 12,

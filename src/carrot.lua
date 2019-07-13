@@ -1,12 +1,27 @@
-farming.register_plant("agriculture:carrot", {
-	description = "Carrot Seed",
-	inventory_image = "agriculture_carrot_seed.png",
-	steps = 4,
-	minlight = 10,
-	fertility = {"grassland"},
-})
+--[[
+This file is part of the Minetest Mod Agriculture.
 
-table.insert(agriculture.registered_seeds, "agriculture:seed_carrot")
+Copyright (C) 2015-2018 Jonah Brüchert <jbb@kaidan.im>
+Copyright (C) 2017-2018 MBB
+Copyright (C) 2019 Linus Jahn <lnj@kaidan.im>
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+]]
+
+agriculture.register_crop("carrot", {
+	description = "Carrot",
+	steps = 4,
+	growtime = 1050,
+	cond = {
+		fertility = {"grassland"},
+	},
+	harvest = {
+		on_use = core.item_eat(1),
+	},
+	craft_seed_by_harvest = true
+})
 
 minetest.register_craftitem("agriculture:carrot_cake", {
 	description = "Carrot Cake",
@@ -15,17 +30,11 @@ minetest.register_craftitem("agriculture:carrot_cake", {
 })
 
 minetest.register_craftitem("agriculture:carrot_cake_dough", {
-	description = "carrot Cake dough",
+	description = "Carrot Cake Dough",
 	inventory_image = "agriculture_carrot_cake_dough.png",
 })
 
 -- crafting
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "agriculture:seed_carrot",
-	recipe = {"agriculture:carrot"}
-})
 
 minetest.register_craft({
 	type = "shapeless",
@@ -39,14 +48,4 @@ minetest.register_craft({
 	cooktime = 18,
 	output = "agriculture:carrot_cake",
 	recipe = "agriculture:carrot_cake_dough"
-})
-
--- make carrot eatable
-minetest.override_item("agriculture:carrot", {
-    on_use = minetest.item_eat(1),
-})
-
--- Override drop
-minetest.override_item("agriculture:carrot_4", {
-    drop = "agriculture:carrot 2"
 })

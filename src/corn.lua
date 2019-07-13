@@ -1,76 +1,75 @@
-farming.register_plant("agriculture:corn", {
-	description = "Corn Seeds",
-	inventory_image = "agriculture_corn_seed.png",
+--[[
+This file is part of the Minetest Mod Agriculture.
+
+Copyright (C) 2015-2018 Jonah Brüchert <jbb@kaidan.im>
+Copyright (C) 2017-2018 MBB
+Copyright (C) 2019 Linus Jahn <lnj@kaidan.im>
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+]]
+
+agriculture.register_crop("corn", {
+	description = "Corn",
 	steps = 8,
-	minlight = 12,
-	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland"},
+	growtime = 1500,
+	cond = {
+		fertility = {"grassland"}
+	},
+	craft_seed_by_harvest = true,
+	plant = {
+		visual_scale = 1.5
+	},
+	grown_plant_drop = {
+		items = {
+			{items = {"agriculture:corn 2"}, rarity = 1},
+			{items = {"agriculture:corn"}, rarity = 3}
+		}
+	}
 })
 
-table.insert(agriculture.registered_seeds, "agriculture:seed_corn")
-
-minetest.register_craftitem("agriculture:corn_bread", {
+core.register_craftitem("agriculture:corn_bread", {
 	description = "Corn Bread",
 	inventory_image = "agriculture_corn_bread.png",
-	on_use = minetest.item_eat(20),
+	on_use = core.item_eat(20),
 })
 
-minetest.register_craftitem("agriculture:corn_bread_dough", {
+core.register_craftitem("agriculture:corn_bread_dough", {
 	description = "Corn Bread Dough",
 	inventory_image = "agriculture_corn_bread_dough.png",
 })
 
 -- crafting
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "agriculture:seed_corn",
-	recipe = {"agriculture:corn"}
-})
-
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "agriculture:corn_bread_dough",
 	recipe = {"agriculture:corn", "farming:flour", "agriculture:salt"}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "agriculture:corn_bread_dough",
 	recipe = {"agriculture:seed_corn", "farming:flour", "agriculture:salt"}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "cooking",
 	cooktime = 18,
 	output = "agriculture:corn_bread",
 	recipe = "agriculture:corn_bread_dough"
 })
 
-minetest.register_craftitem("agriculture:corn_baken", {
+core.register_craftitem("agriculture:corn_baken", {
 	description = "Baken Corn",
 	inventory_image = "agriculture_corn_baken.png",
-	on_use = minetest.item_eat(5),
+	on_use = core.item_eat(5),
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "cooking",
 	cooktime = 14,
 	output = "agriculture:corn_baken",
 	recipe = "agriculture:corn"
-})
-
--- Change visual scale of the corn plants
-for i = 1 , 8 do		
-	minetest.override_item("agriculture:corn_"..i, {
-		drawtype = "plantlike",
-		visual_scale = 1.5 ,
-	})
-end
-
--- Override drop
-minetest.override_item("agriculture:corn_8", {
-	drawtype = "plantlike",
-	visual_scale = 1.5 ,
-	drop = "agriculture:corn 3"
 })

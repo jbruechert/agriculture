@@ -7,6 +7,8 @@ farming.register_plant("agriculture:corn", {
 	fertility = {"grassland"},
 })
 
+table.insert(agriculture.registered_seeds, "agriculture:seed_corn")
+
 minetest.register_craftitem("agriculture:corn_bread", {
 	description = "Corn Bread",
 	inventory_image = "agriculture_corn_bread.png",

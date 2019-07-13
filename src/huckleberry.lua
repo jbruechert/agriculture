@@ -7,6 +7,8 @@ farming.register_plant("agriculture:huckleberry", {
 	fertility = {"grassland"},
 })
 
+table.insert(agriculture.registered_seeds, "agriculture:seed_huckleberry")
+
 -- Change Drawtype of the plants
 for i = 3 , 5 do		
 	minetest.override_item("agriculture:huckleberry_"..i, {

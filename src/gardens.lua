@@ -1,17 +1,31 @@
--- mods/farming/gardens.lua
--- ========================
--- See README.txt for licensing and other information.
+--[[
+This file is part of the Minetest Mod Agriculture.
+
+Copyright (C) 2016-2019 Linus Jahn <lnj@kaidan.im>
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+]]
 
 --
 -- API
 --
 
-local function drop_rnd(pos, item)
+local function drop_random(pos, item)
 	core.add_item({x = pos.x + math.random(-25, 25)/100, y = pos.y,
 		z = pos.z + math.random(-25, 25)/100}, item)
 end
 
-function farming.register_garden(name, def)
+--[[
+Registers a garden node which drops a random set of seeds.
+
+def.description: If not defined, "Garden" is used.
+def.items: List of items that can possibly be dropped
+def.number_of_drops: Average number of items dropped
+def.texture: If tiles is not defined, this is used as texture for all sides.
+]]
+function agriculture.register_garden(name, def)
 	local items = def.items
 	local number_of_drops = def.number_of_drops or 2
 
@@ -26,7 +40,7 @@ function farming.register_garden(name, def)
 	def.after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		for i = 1, number_of_drops + math.random(-1, 1) do
 			local item = items[math.random(1, #items)]
-			drop_rnd(pos, item)
+			drop_random(pos, item)
 		end
 	end
 	def.sunlight_propagates = true
@@ -49,32 +63,42 @@ end
 -- Gardens
 --
 
-farming.register_garden("farming:garden", {
-	items = farming.registered_seeds,
-	texture = "farming_garden.png",
+agriculture.register_garden("agriculture:garden", {
+	items = agriculture.registered_seeds,
+	texture = "agriculture_garden.png",
 })
+
+-- TODO: Add more different gardens for different biomes (e.g. tropical garden for rainforests)
 
 --
 -- MapGen
 --
 
-local function register_garden_decoration(name, biomes, fill_ratio)
+function agriculture.register_garden_decoration(name, def)
+	def = def or {}
+	def.fill_ratio = def.fill_ratio or 0.00008
+
 	core.register_decoration({
 		deco_type = "simple",
-		place_on = {"default:dirt_with_grass"},
+		place_on = def.place_on or {"default:dirt_with_grass"},
 		sidelen = 16,
-		fill_ratio = fill_ratio,
-		biomes = biomes,
+		fill_ratio = def.fill_ratio,
+		biomes = def.biomes,
 		y_min = 3,
 		y_max = 80,
 		decoration = name,
 	})
 end
 
-if core.get_mapgen_params().mgname ~= "v6" then
-	register_garden_decoration("farming:garden", {"stone_grassland", "sandstone_grassland"}, 0.00008)
-	register_garden_decoration("farming:garden", {"maple_forest", "red_maple_forest", "mixed_maple_forest",
-		"cherry_tree_forest", "deciduous_forest"}, 0.00004)
+if core.get_mapgen_params().mgname == "v6" then
+	agriculture.register_garden_decoration("agriculture:garden")
 else
-	register_garden_decoration("farming:garden", nil, 0.00008)
+	agriculture.register_garden_decoration("agriculture:garden", {
+		biomes = {"grassland", "floatland_grassland", "deciduous_forest"},
+	})
+	agriculture.register_garden_decoration("agriculture:garden", {
+		biomes = {"coniferous_forest", "savanna", "floatland_coniferous_forest"},
+		fill_ratio = 0.00004,
+		place_on = {"default:dirt_with_grass", "default:dirt_with_dry_grass"}
+	})
 end

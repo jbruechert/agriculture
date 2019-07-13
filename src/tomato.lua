@@ -1,3 +1,5 @@
+table.insert(agriculture.registered_seeds, "agriculture:tomato_seed")
+
 farming.register_plant("agriculture:tomato", {
 	description = "Tomato Stick With Seeds",
 	inventory_image = "agriculture_tomato_stick_seed.png",

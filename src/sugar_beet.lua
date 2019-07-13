@@ -1,35 +1,34 @@
-farming.register_plant("agriculture:sugar_beet", {
-	description = "Sugar Beet Seed",
-	inventory_image = "agriculture_sugar_beet_seed.png",
+--[[
+This file is part of the Minetest Mod Agriculture.
+
+Copyright (C) 2015-2018 Jonah Brüchert <jbb@kaidan.im>
+Copyright (C) 2017-2018 MBB
+Copyright (C) 2019 Linus Jahn <lnj@kaidan.im>
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+]]
+
+agriculture.register_crop("sugar_beet", {
+	description = "Sugar Beet",
 	steps = 5,
-	minlight = 10,
-	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland"}
+	growtime = 1250,
+	cond = {
+		fertility = {"grassland"}
+	},
+	craft_seed_by_harvest = true,
 })
 
-table.insert(agriculture.registered_seeds, "agriculture:seed_sugar_beet")
-
-minetest.register_craftitem("agriculture:sugar", {
+core.register_craftitem("agriculture:sugar", {
 	description = "Sugar",
 	inventory_image = "agriculture_sugar.png",
 })
 
 -- crafting
-
-minetest.register_craft({
+core.register_craft({
 	type = "cooking",
-	cooktime = 10,
+	cooktime = 15,
 	output = "agriculture:sugar",
 	recipe = "agriculture:sugar_beet"
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "agriculture:seed_sugar_beet",
-	recipe = {"agriculture:sugar_beet"}
-})
-
--- Override drop
-minetest.override_item("agriculture:sugar_beet_5", {
-    drop = "agriculture:sugar_beet 2"
 })

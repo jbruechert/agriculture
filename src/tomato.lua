@@ -1,62 +1,76 @@
-table.insert(agriculture.registered_seeds, "agriculture:tomato_seed")
+--[[
+This file is part of the Minetest Mod Agriculture.
 
-farming.register_plant("agriculture:tomato", {
-	description = "Tomato Stick With Seeds",
-	inventory_image = "agriculture_tomato_stick_seed.png",
+Copyright (C) 2015-2018 Jonah Brüchert <jbb@kaidan.im>
+Copyright (C) 2017-2018 MBB
+Copyright (C) 2016-2019 Linus Jahn <lnj@kaidan.im>
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+]]
+
+agriculture.register_crop("tomato", {
+	description = "Tomato",
 	steps = 8,
-	minlight = 12,
-	fertility = {"grassland"},
-	on_use = minetest.item_eat(10)
+	growtime = 1600,
+	craft_seed_by_harvest = false,
+	seed = {
+		name = "agriculture:tomato_seed_with_stick",
+		description = "Tomato Seed With Stick",
+		inventory_image = "agriculture_tomato_stick_seed.png"
+	},
+	cond = {
+		fertility = {"grassland"}
+	},
+	plant = {
+		visual_scale = 1.5
+	},
+	harvest = {
+		on_use = core.item_eat(4)
+	},
+	grown_plant_drop = {
+		items = {
+			{items = {"agriculture:tomato 2"}, rarity = 1},
+			{items = {"agriculture:tomato"}, rarity = 3}
+		}
+	}
 })
 
-minetest.register_craftitem("agriculture:tomato_bread", {
+-- override registered seeds with tomato seed without stick, so this one is dropped by gardens
+for i = 0, #agriculture.registered_seeds do
+	if agriculture.registered_seeds[i] == "agriculture:tomato_seed_with_stick" then
+		agriculture.registered_seeds[i] = "agriculture:tomato_seed"
+	end
+end
+
+core.register_craftitem("agriculture:tomato_bread", {
 	description = "Bread With Tomatos",
 	inventory_image = "agriculture_tomato_bread.png",
-	on_use = minetest.item_eat(10),
+	on_use = core.item_eat(10),
 })
 
-minetest.register_craftitem("agriculture:tomato_seed", {
+core.register_craftitem("agriculture:tomato_seed", {
 	description = "Tomato Seed (need a stick to grow)",
 	inventory_image = "agriculture_tomato_seed.png",
 })
 
 -- crafting
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "agriculture:tomato_bread",
 	recipe = {"farming:bread", "agriculture:tomato"}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "agriculture:tomato_seed",
 	recipe = {"agriculture:tomato"}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
-	output = "agriculture:seed_tomato",
+	output = "agriculture:tomato_seed_with_stick",
 	recipe = {"agriculture:tomato_seed", "default:stick"}
-})
-
--- Override visual scale
-for i = 1 , 8 do		
-	minetest.override_item("agriculture:tomato_"..i, {
-		drawtype = "plantlike",
-		visual_scale = 1.4 ,
-	})
-end
-
--- change the drop of the already big grown tomato
-minetest.override_item("agriculture:tomato_8", {
-	drawtype = "plantlike",
-	visual_scale = 1.5 ,
-	drop = "agriculture:tomato 3"
-})
-
--- change the drawtype of the seed with stick
-minetest.override_item("agriculture:seed_tomato", {
-	drawtype = "plantlike",
-	visual_scale = 1.5,
 })

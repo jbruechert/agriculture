@@ -1,9 +1,9 @@
-dofile(minetest.get_modpath("agriculture") .. "/carrot.lua")
-dofile(minetest.get_modpath("agriculture") .. "/sugar_beet.lua")
-dofile(minetest.get_modpath("agriculture") .. "/strawberry.lua")
-dofile(minetest.get_modpath("agriculture") .. "/corn.lua")
-dofile(minetest.get_modpath("agriculture") .. "/tomato.lua")
-dofile(minetest.get_modpath("agriculture") .. "/huckleberry.lua")
+dofile(minetest.get_modpath("agriculture") .. "/src/carrot.lua")
+dofile(minetest.get_modpath("agriculture") .. "/src/sugar_beet.lua")
+dofile(minetest.get_modpath("agriculture") .. "/src/strawberry.lua")
+dofile(minetest.get_modpath("agriculture") .. "/src/corn.lua")
+dofile(minetest.get_modpath("agriculture") .. "/src/tomato.lua")
+dofile(minetest.get_modpath("agriculture") .. "/src/huckleberry.lua")
 
 
 -- salt

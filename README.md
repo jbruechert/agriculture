@@ -9,4 +9,4 @@ Code (WTFPL):
 
 Textures (CC BY-SA 4.0):
  * Copyright (C) 2015-2016 JBB
- * Copyright (C) 2017-2018 MBB
+ * Copyright (C) 2017-2019 MBB

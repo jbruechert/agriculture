@@ -10,6 +10,18 @@ as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 
 agriculture.registered_seeds = {}
 
+-- MT 0.4 compatibility
+if not core.get_heat then
+	core.get_heat = function(pos)
+		return nil
+	end
+end
+if not core.get_humidity then
+	core.get_humidity = function(pos)
+		return nil
+	end
+end
+
 local function round_number(num, idp)
 	local mult = 10^(idp or 0)
 	return math.floor(num * mult + 0.5) / mult
@@ -155,7 +167,7 @@ local function start_timer(pos, growtime, steps, cond)
 		additional_growtime = additional_growtime + growtime * cond.light.slowdown * diff
 	end
 
-	if cond.heat.best and cond.heat.slowdown then
+	if cond.heat.best and cond.heat.slowdown and core.get_heat(pos) then
 		local diff = cond.heat.best - core.get_heat(pos)
 		if diff < 0 then
 			diff = diff * (-1)
@@ -164,7 +176,7 @@ local function start_timer(pos, growtime, steps, cond)
 		additional_growtime = additional_growtime + growtime * cond.heat.slowdown * diff
 	end
 
-	if cond.humidity.best and cond.humidity.slowdown then
+	if cond.humidity.best and cond.humidity.slowdown and core.get_humidity(pos) then
 		local diff = cond.humidity.best - core.get_humidity(pos)
 		if diff < 0 then
 			diff = diff * (-1)

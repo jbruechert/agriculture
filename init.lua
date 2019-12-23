@@ -39,7 +39,7 @@ compost.COMPOST_ITEM_VALUE = 100.0
 compost.COMPOSTER_UPDATE_INTERVAL = 1.0
 
 -- increase to make compost processing faster
-compost.COMPOSTER_SPEED = 16
+compost.COMPOSTER_SPEED = 1.0
 
 local COMPOSTER_INV_INPUT = "input"
 local COMPOSTER_INV_OUTPUT = "output"

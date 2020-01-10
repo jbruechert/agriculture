@@ -242,7 +242,7 @@ function agriculture.register_crop(name, def)
 	}
 	def.cond.humidity = def.cond.humidity or {
 		min = 22,
-		max = 95,
+		max = 120,
 		best = 60,
 		slowdown = 0.008
 	}

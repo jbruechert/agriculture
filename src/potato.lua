@@ -8,7 +8,7 @@ terms of the Do What The Fuck You Want To Public License, Version 2,
 as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 ]]
 
-farming.register_crop("potato", {
+agriculture.register_crop("potato", {
 	description = "Potato",
 	steps = 3,
 	growtime = 900,

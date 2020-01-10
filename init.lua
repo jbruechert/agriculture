@@ -3,7 +3,7 @@ This file is part of the Minetest Mod Agriculture.
 
 Copyright (C) 2015-2018 Jonah Brüchert <jbb@kaidan.im>
 Copyright (C) 2017-2018 MBB
-Copyright (C) 2019 Linus Jahn <lnj@kaidan.im>
+Copyright (C) 2019-2020 Linus Jahn <lnj@kaidan.im>
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,
@@ -25,6 +25,7 @@ dofile(modpath .. "/src/strawberry.lua")
 dofile(modpath .. "/src/corn.lua")
 dofile(modpath .. "/src/tomato.lua")
 dofile(modpath .. "/src/huckleberry.lua")
+dofile(modpath .. "/src/lettuce.lua")
 -- gardens are loaded after all plants have been registered
 dofile(modpath .. "/src/gardens.lua")
 -- legacy compatibility

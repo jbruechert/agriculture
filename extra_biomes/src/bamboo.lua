@@ -130,8 +130,6 @@ core.register_decoration({
     place_on = {"default:dirt_with_grass"},
     sidelen = 16,
     noise_params = {
-        offset = offset,
-        scale = scale,
         spread = {x = 250, y = 250, z = 250},
         seed = 329,
         octaves = 3,

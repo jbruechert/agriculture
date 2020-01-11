@@ -329,7 +329,7 @@ function agriculture.register_crop(name, def)
 		--
 
 		if i == def.steps then
-			if craft_seed_by_harvest then
+			if def.craft_seed_by_harvest then
 				-- drop harvest only
 				plantdef.drop = def.grown_plant_drop or {
 					items = {

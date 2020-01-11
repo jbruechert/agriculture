@@ -1,14 +1,12 @@
 --[[
 This file is part of the Minetest Mod Agriculture.
 
-Copyright (C) 2016-2019 Linus Jahn <lnj@kaidan.im>
+Copyright (C) 2016-2020 Linus Jahn <lnj@kaidan.im>
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,
 as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 ]]
-
-agriculture.registered_seeds = {}
 
 -- MT 0.4 compatibility
 if not core.get_heat then
@@ -259,6 +257,8 @@ function agriculture.register_crop(name, def)
 
 	def.step_after_harvest = tostring(def.step_after_harvest or "1")
 
+	def.garden_groups = def.garden_groups or {"default"}
+
 	-- +-----------------------------------------------------------------------------+
 	-- |                                Plant Steps                                  |
 	-- +-----------------------------------------------------------------------------+
@@ -418,6 +418,8 @@ function agriculture.register_crop(name, def)
 		})
 	end
 
-	-- Add items to lists
-	table.insert(agriculture.registered_seeds, seedname)
+	-- Register garden item, if gardens loaded and garden_groups not empty
+	if gardens and next(def.garden_groups) ~= nil then
+		gardens.register_garden_item(seedname, def.garden_groups)
+	end
 end

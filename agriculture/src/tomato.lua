@@ -3,7 +3,7 @@ This file is part of the Minetest Mod Agriculture.
 
 Copyright (C) 2015-2018 Jonah Brüchert <jbb@kaidan.im>
 Copyright (C) 2017-2018 MBB
-Copyright (C) 2016-2019 Linus Jahn <lnj@kaidan.im>
+Copyright (C) 2016-2020 Linus Jahn <lnj@kaidan.im>
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,
@@ -34,14 +34,12 @@ agriculture.register_crop("tomato", {
 			{items = {"agriculture:tomato 2"}, rarity = 1},
 			{items = {"agriculture:tomato"}, rarity = 3}
 		}
-	}
+	},
+	garden_groups = {}
 })
 
--- override registered seeds with tomato seed without stick, so this one is dropped by gardens
-for i = 0, #agriculture.registered_seeds do
-	if agriculture.registered_seeds[i] == "agriculture:tomato_seed_with_stick" then
-		agriculture.registered_seeds[i] = "agriculture:tomato_seed"
-	end
+if gardens then
+	gardens.register_garden_item("agriculture:tomato_seed")
 end
 
 core.register_craftitem("agriculture:tomato_bread", {

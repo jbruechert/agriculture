@@ -27,8 +27,6 @@ dofile(modpath .. "/src/tomato.lua")
 dofile(modpath .. "/src/huckleberry.lua")
 dofile(modpath .. "/src/lettuce.lua")
 dofile(modpath .. "/src/potato.lua")
--- gardens are loaded after all plants have been registered
-dofile(modpath .. "/src/gardens.lua")
 -- legacy compatibility
 dofile(modpath .. "/src/legacy.lua")
 

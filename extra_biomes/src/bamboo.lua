@@ -87,9 +87,9 @@ core.register_decoration({
 core.register_node("extra_biomes:bamboo", {
     description = "Bamboo",
     drawtype = "nodebox",
-    tiles = {"extra_biomes_bamboo_top.png", "extra_biomes_bamboo_top.png", "extra_biomes_bamboo.png"},
-    inventory_image = "extra_biomes_bamboo.png",
-    wield_image = "extra_biomes_bamboo.png",
+    tiles = {"extra_biomes_bamboo_top.png", "extra_biomes_bamboo_top.png", {name="extra_biomes_bamboo.png", align_style="world", scale=4}},
+    inventory_image = "extra_biomes_bamboo_inventory.png",
+    wield_image = "extra_biomes_bamboo_inventory.png",
     paramtype = "light",
     sunlight_propagates = true,
     walkable = true,

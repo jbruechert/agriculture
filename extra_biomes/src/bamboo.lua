@@ -35,6 +35,18 @@ function extra_biomes.grow_bamboo(pos, node)
     return true
 end
 
+local function my_register_stair_and_slab(subname, recipeitem, groups, images,
+                desc_stair, desc_slab, sounds, worldaligntex)
+        stairs.register_stair(subname, recipeitem, groups, images, desc_stair,
+                sounds, worldaligntex)
+        stairs.register_stair_inner(subname, recipeitem, groups, images, "",
+                sounds, worldaligntex, "Inner " .. desc_stair)
+        stairs.register_stair_outer(subname, recipeitem, groups, images, "",
+                sounds, worldaligntex, "Outer " .. desc_stair)
+        stairs.register_slab(subname, recipeitem, groups, images, desc_slab,
+                sounds, worldaligntex)
+end
+
 core.register_abm({
     nodenames = {"extra_biomes:bamboo"},
     neighbors = {"default:dirt", "default:dirt_with_grass", "default:sand"},
@@ -131,3 +143,34 @@ core.register_decoration({
     decoration = "default:grass_5"
 })
 
+core.register_node("extra_biomes:bamboo_wood", {
+    description = "Bamboo Wood",
+    tiles = {{name="extra_biomes_bamboo_wood.png", align_style="world", scale=2}},
+    inventory_image = minetest.inventorycube("extra_biomes_bamboo_wood_inventory.png"),
+    paramtype2 = "facedir",
+    place_param2 = 0,
+    is_ground_content = false,
+    groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
+    sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_craft({
+    output = "extra_biomes:bamboo_wood",
+    recipe = {
+        {"extra_biomes:bamboo", "extra_biomes:bamboo", "extra_biomes:bamboo"},
+        {"extra_biomes:bamboo", "extra_biomes:bamboo", "extra_biomes:bamboo"},
+        {"extra_biomes:bamboo", "extra_biomes:bamboo", "extra_biomes:bamboo"},
+    }
+})
+
+-- subname, recipeitem, groups, images, desc_stair, desc_slab, sounds, worldaligntex
+my_register_stair_and_slab(
+    "bamboo_wood",
+    "extra_biomes:bamboo_wood",
+    {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
+    {{name="extra_biomes_bamboo_wood.png", align_style="world", scale=2}},
+    "Bamboo Wood Stair",
+    "Bamboo Wood Slab",
+    default.node_sound_stone_defaults(),
+    true
+)

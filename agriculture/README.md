@@ -1,4 +1,4 @@
-Agriculture Mod
+# Agriculture Mod
 
 ![](http://jbbgameich.github.io/file/image/agriculture_all_plants.png)
 

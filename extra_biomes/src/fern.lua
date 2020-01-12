@@ -86,7 +86,6 @@ core.register_decoration({
     y_max = 31000,
     param2 = 4,
     decoration = "default:fern_2"
-
 })
 
 core.register_decoration({

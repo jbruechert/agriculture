@@ -156,7 +156,6 @@ core.register_decoration({
     y_max = 31000,
     param2 = 4,
     decoration = "extra_biomes:fern"
-
 })
 
 core.register_node("extra_biomes:bamboo_wood", {

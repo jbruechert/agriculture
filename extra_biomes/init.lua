@@ -13,3 +13,5 @@ extra_biomes = {}
 modpath = core.get_modpath("extra_biomes")
 
 dofile(modpath .. "/src/bamboo.lua")
+dofile(modpath .. "/src/fern.lua")
+

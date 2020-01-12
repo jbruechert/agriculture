@@ -172,3 +172,13 @@ my_register_stair_and_slab(
     default.node_sound_stone_defaults(),
     true
 )
+
+default.register_fence("extra_biomes:fence_bamboo", {
+	description = "Bamboo Fence",
+	texture = "extra_biomes_bamboo_fence.png",
+ 	inventory_image = "default_fence_overlay.png^extra_biomes_bamboo_fence.png^default_fence_overlay.png^[makealpha:255,126,126",
+ 	wield_image = "default_fence_overlay.png^extra_biomes_bamboo_fence.png^default_fence_overlay.png^[makealpha:255,126,126",
+	material = "extra_biomes:bamboo",
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
+	sounds = default.node_sound_wood_defaults()
+})

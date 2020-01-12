@@ -141,6 +141,24 @@ core.register_decoration({
     decoration = "default:grass_5"
 })
 
+core.register_decoration({
+    deco_type = "simple",
+    place_on = {"default:dirt_with_grass"},
+    sidelen = 16,
+    noise_params = {
+        spread = {x = 250, y = 250, z = 250},
+        seed = 356,
+        octaves = 8,
+        persist = 1
+    },
+    biomes = {"bamboo_forest"},
+    y_min = 1,
+    y_max = 31000,
+    param2 = 4,
+    decoration = "extra_biomes:fern"
+
+})
+
 core.register_node("extra_biomes:bamboo_wood", {
     description = "Bamboo Wood",
     tiles = {{name="extra_biomes_bamboo_wood.png", align_style="world", scale=2}},
@@ -181,4 +199,25 @@ default.register_fence("extra_biomes:fence_bamboo", {
 	material = "extra_biomes:bamboo",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 	sounds = default.node_sound_wood_defaults()
+})
+
+core.register_node("extra_biomes:fern", {
+        description = "Fern",
+        drawtype = "plantlike",
+        waving = 1,
+        tiles = {"extra_biomes_fern.png"},
+        inventory_image = "extra_biomes_fern.png",
+        wield_image = "extra_biomes_fern.png",
+        paramtype = "light",
+        paramtype2 = "meshoptions",
+    place_param2 = 4,
+        sunlight_propagates = true,
+        walkable = false,
+        buildable_to = true,
+        groups = {snappy = 3, flammable = 3, attached_node = 1, compostable = 20},
+        sounds = default.node_sound_leaves_defaults(),
+        selection_box = {
+                type = "fixed",
+                fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16}
+        },
 })

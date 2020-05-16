@@ -12,3 +12,4 @@ local modpath = core.get_modpath("3d_plants")
 
 dofile(modpath .. "/src/mushrooms.lua")
 dofile(modpath .. "/src/apple.lua")
+dofile(modpath .. "/src/ivy.lua")

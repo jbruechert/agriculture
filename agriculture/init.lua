@@ -27,6 +27,7 @@ dofile(modpath .. "/src/tomato.lua")
 dofile(modpath .. "/src/huckleberry.lua")
 dofile(modpath .. "/src/lettuce.lua")
 dofile(modpath .. "/src/potato.lua")
+dofile(modpath .. "/src/decor.lua")
 -- legacy compatibility
 dofile(modpath .. "/src/legacy.lua")
 

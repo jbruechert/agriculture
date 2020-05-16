@@ -17,10 +17,10 @@ agriculture.register_crop("corn", {
 	cond = {
 		fertility = {"grassland"}
 	},
+    plant = {
+    paramtype2 = "meshoptions",
+    place_param2 = 3,},
 	craft_seed_by_harvest = true,
-	plant = {
-		visual_scale = 1.5
-	},
 	grown_plant_drop = {
 		items = {
 			{items = {"agriculture:corn 2"}, rarity = 1},
@@ -28,6 +28,45 @@ agriculture.register_crop("corn", {
 		}
 	}
 })
+
+--override corn
+core.override_item("agriculture:corn_8", {
+	drawtype = "mesh",
+	mesh = "agriculture_corn_8.obj",
+    waving = 0
+
+})
+
+core.override_item("agriculture:corn_7", {
+	drawtype = "mesh",
+	mesh = "agriculture_corn_8.obj",
+    waving = 0
+
+})
+
+core.override_item("agriculture:corn_6", {
+	drawtype = "mesh",
+	mesh = "agriculture_corn_6.obj",
+    waving = 0
+
+})
+
+core.override_item("agriculture:corn_5", {
+    visual_scale = 2
+
+})
+
+core.override_item("agriculture:corn_4", {
+    visual_scale = 2
+
+})
+    
+core.override_item("agriculture:corn_3", {
+    visual_scale = 2
+
+})
+
+
 
 core.register_craftitem("agriculture:corn_bread", {
 	description = "Corn Bread",

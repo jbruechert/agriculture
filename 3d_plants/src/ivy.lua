@@ -9,7 +9,7 @@ core.register_node("3d_plants:ivy", {
     walkable = false,
     mesh = "3d_plants_ivy.obj",
     groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, stick = 1, tree = 1},
-    sounds = default.node_sound_wood_defaults(),
+    sounds = default.node_sound_leaves_defaults(),
     selection_box = {
         type = "fixed",
         fixed = {-0.5, -0.5, -0.5, 0.5, -0.3, 0.5}

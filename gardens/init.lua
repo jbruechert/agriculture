@@ -148,7 +148,7 @@ function gardens.register_garden_decoration(name, def)
 	})
 end
 
-if core.get_mapgen_params().mgname == "v6" then
+if core.get_mapgen_setting("mgname") == "v6" then
 	gardens.register_garden_decoration("gardens:garden")
 else
 	gardens.register_garden_decoration("gardens:garden", {
